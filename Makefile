@@ -25,7 +25,11 @@ help:
 	@echo "build                    Build the docker image"
 	@echo "k8s_deploy               Deploy to Kubernetes"
 
-build:
+src_generate_html:
+	BRANCH_NAME=$(BRANCH_NAME) \
+	$(MAKE) -C src src_generate_html
+
+build: src_generate_html
 	docker build . -t $(IMAGE_NAME):$(IMAGE_TAG)
 
 ci-tag-registry: build
