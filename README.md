@@ -25,6 +25,26 @@ deployment with it's own URL and K8S namespace. If the branch name is
 prepended with `feature-` it will be picked up by Jenkins and deployed. The
 feature URL will be posted in a slack channel once the deploy has been applied.
 
+## Usage
+
+#### Manually deploying to Kubernetes
+
+#### Prerequisites
+
+In order to deploy to Kubernetes you must have a cluster and the kubectl
+command working accordingly.
+
+You must set the env vars `REGISTRY_CRED_USR` and `REGISTRY_CRED_PSW` for your
+container registry.
+
+Run the following command to deploy the example app `make ci-push k8s_deploy`.
+
+If you are running the cluster locally you might need to forward the deployment to a local port.
+
+`kubectl port-forward k8s-feature-deploys-deployment-6875595c55-mzkx9 8000:80 --namespace=k8s-feature-deploys`
+
+If all went well you can point your browser at `http://localhost:8000`.
+
 ## Credits
 
 This repo has been extracted from UDF_APP feature deploys made by Lasse Bach.
