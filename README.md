@@ -37,6 +37,8 @@ command working accordingly.
 You must set the env vars `REGISTRY_CRED_USR` and `REGISTRY_CRED_PSW` for your
 container registry.
 
+#### Deploying
+
 Run the following command to deploy the example app `make ci-push k8s_deploy`.
 
 If you are running the cluster locally you might need to forward the deployment to a local port.
