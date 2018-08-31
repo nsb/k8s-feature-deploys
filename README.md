@@ -27,7 +27,7 @@ feature URL will be posted in a slack channel once the deploy has been applied.
 
 ## Usage
 
-#### Manually deploying to Kubernetes
+### Manually deploying to Kubernetes
 
 #### Prerequisites
 
