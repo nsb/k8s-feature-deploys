@@ -24,3 +24,7 @@ Feature deploys allows you to automatically deploy a git branch to a separate
 deployment with it's own URL and K8S namespace. If the branch name is
 prepended with `feature-` it will be picked up by Jenkins and deployed. The
 feature URL will be posted in a slack channel once the deploy has been applied.
+
+## Credits
+
+This repo has been extracted from UDF_APP feature deploys made by Lasse Bach.
