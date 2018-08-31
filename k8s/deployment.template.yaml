@@ -21,4 +21,4 @@ spec:
         - name: k8s-feature-deploys
           image: revenueoptimisation.azurecr.io/k8s-feature-deploys:__IMAGE_TAG__
           ports:
-            - containerPort: 8000
+            - containerPort: 80

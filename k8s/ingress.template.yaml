@@ -15,7 +15,7 @@ spec:
         - path: /
           backend:
             serviceName: k8s-feature-deploys-service
-            servicePort: 8000
+            servicePort: 80
   tls:
   - hosts:
     - __URL_HOSTNAME__
