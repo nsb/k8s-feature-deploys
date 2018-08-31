@@ -28,7 +28,7 @@ k8s_create-namespace:
 k8s_apply_configuration: \
 	k8s_add-registry-secret
 
-k8s_add-registry-secret: SECRET_NAME = revenueoptimisation
+k8s_add-registry-secret: SECRET_NAME = k8s-feature-deploys-secrets
 k8s_add-registry-secret:
 	@test -n '$(REGISTRY_CRED_USR)'
 	@test -n '$(REGISTRY_CRED_PSW)'

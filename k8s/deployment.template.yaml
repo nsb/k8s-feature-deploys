@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-feature-deploys-deployment
+  namespace: __K8S_NAMESPACE__
+  labels:
+    app: k8s-feature-deploys
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-feature-deploys
+  template:
+    metadata:
+      labels:
+        app: k8s-feature-deploys
+    spec:
+      imagePullSecrets:
+        - name: k8s-feature-deploys-secrets
+      containers:
+        - name: k8s-feature-deploys
+          image: revenueoptimisation.azurecr.io/udf-api:__IMAGE_TAG__
+          ports:
+            - containerPort: 8000

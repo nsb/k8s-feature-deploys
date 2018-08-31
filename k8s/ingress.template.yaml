@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-feature-deploys
+  namespace: __K8S_NAMESPACE__
+  labels:
+    app: k8s-feature-deploys
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: __URL_HOSTNAME__
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: k8s-feature-deploys-service
+            servicePort: 8000
+  tls:
+  - hosts:
+    - __URL_HOSTNAME__
+    secretName: tls-wildcard-maersk-digital-net
