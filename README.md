@@ -55,4 +55,4 @@ k8s-feature-deploys-deployment-6875595c55-mzkx9   1/1       Running   0         
 kubectl port-forward k8s-feature-deploys-deployment-6875595c55-mzkx9 8000:80 --namespace=k8s-feature-deploys
 ```
 
-If all went well you can point your browser at `http://localhost:8000`.
+If all went well you can point your browser at http://localhost:8000.
