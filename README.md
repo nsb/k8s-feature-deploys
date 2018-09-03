@@ -53,7 +53,3 @@ kubectl port-forward k8s-feature-deploys-deployment-6875595c55-mzkx9 8000:80 --n
 ```
 
 If all went well you can point your browser at `http://localhost:8000`.
-
-## Credits
-
-This repo has been extracted from UDF_APP feature deploys made by Lasse Bach.
