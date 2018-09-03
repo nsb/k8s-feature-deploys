@@ -23,6 +23,7 @@ REGISTRY_IMAGE_NAME = $(CONTAINER_REGISTRY)$(IMAGE_NAME)
 help:
 	@echo "help                     This help message"
 	@echo "build                    Build the docker image"
+	@echo "ci-push                  push the docker image to registry"
 	@echo "k8s_deploy               Deploy to Kubernetes"
 
 src_generate_html:
