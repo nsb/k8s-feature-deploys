@@ -34,8 +34,7 @@ feature URL will be posted in a slack channel once the deploy has been applied.
 In order to deploy to Kubernetes you must have a cluster and the kubectl
 command working accordingly.
 
-You must set the env vars `REGISTRY_CRED_USR` and `REGISTRY_CRED_PSW` for your
-container registry.
+You must set the env vars `CONTAINER_REGISTRY`, `REGISTRY_CRED_USR` and `REGISTRY_CRED_PSW` for your container registry.
 
 #### Deploying
 
