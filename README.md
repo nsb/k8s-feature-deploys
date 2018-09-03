@@ -43,7 +43,15 @@ Run the following command to deploy the example app `make ci-push k8s_deploy`.
 
 If you are running the cluster locally you might need to forward the deployment to a local port.
 
-`kubectl port-forward k8s-feature-deploys-deployment-6875595c55-mzkx9 8000:80 --namespace=k8s-feature-deploys`
+```console
+kubectl get pods --namespace=k8s-feature-deploy
+NAME                                              READY     STATUS    RESTARTS   AGE
+k8s-feature-deploys-deployment-6875595c55-mzkx9   1/1       Running   0          2d
+```
+
+```console
+kubectl port-forward k8s-feature-deploys-deployment-6875595c55-mzkx9 8000:80 --namespace=k8s-feature-deploys
+```
 
 If all went well you can point your browser at `http://localhost:8000`.
 
