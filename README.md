@@ -25,6 +25,9 @@ deployment with it's own URL and K8S namespace. If the branch name is
 prepended with `feature-` it will be picked up by Jenkins and deployed. The
 feature URL will be posted in a slack channel once the deploy has been applied.
 
+Feature deploys works by deploying to a new Kubernetes namespace for each
+feature branch. In addition it sets a new URL based on the branch name.
+
 ## Usage
 
 ### Manually deploying to Kubernetes
