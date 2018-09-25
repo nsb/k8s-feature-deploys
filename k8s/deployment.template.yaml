@@ -19,6 +19,6 @@ spec:
         - name: k8s-feature-deploys-secrets
       containers:
         - name: k8s-feature-deploys
-          image: revenueoptimisation.azurecr.io/k8s-feature-deploys:__IMAGE_TAG__
+          image: __REGISTRY_IMAGE_NAME__:__IMAGE_TAG__
           ports:
             - containerPort: 80

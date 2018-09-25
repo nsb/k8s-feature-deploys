@@ -5,19 +5,19 @@ pipeline {
         disableConcurrentBuilds()
     }
     environment {
-        REGISTRY_CRED = credentials('revenueoptimisation_acr')
+        REGISTRY_CRED = credentials('container_registry')
     }
 
     stages {
         stage('Test') {
-            agent { label 'dockeredge' }
+            agent { label 'docker' }
             steps {
                 sh 'make ci-push'
             }
         }
 
         stage('Create and migrate database feature') {
-            agent { label 'dockeredge' }
+            agent { label 'docker' }
             when {
                 branch 'feature-*'
                 beforeAgent true
@@ -32,7 +32,7 @@ pipeline {
                 branch "feature-*"
                 beforeAgent true
             }
-            agent { label 'dockeredge' }
+            agent { label 'docker' }
                 sh 'make k8s_deploy'
             }
             post {
@@ -67,7 +67,7 @@ pipeline {
                 branch "master"
                 beforeAgent true
             }
-            agent { label 'dockeredge' }
+            agent { label 'docker' }
             steps {
                 sh 'make k8s_deploy'
             }

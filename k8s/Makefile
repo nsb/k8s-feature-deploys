@@ -6,6 +6,7 @@ IMAGE_TAG ?=
 URL_HOSTNAME ?=
 K8S_NAMESPACE ?=
 CONTAINER_REGISTRY ?=
+REGISTRY_IMAGE_NAME ?=
 SAFE_BRANCH_NAME ?=
 
 $(if $(REGISTRY_CRED_USR),,$(error REGISTRY_CRED_USR variable not set))
@@ -14,6 +15,7 @@ $(if $(IMAGE_TAG),,$(error IMAGE_TAG variable not set))
 $(if $(URL_HOSTNAME),,$(error URL_HOSTNAME variable not set))
 $(if $(K8S_NAMESPACE),,$(error K8S_NAMESPACE variable not set))
 $(if $(CONTAINER_REGISTRY),,$(error CONTAINER_REGISTRY variable not set))
+$(if $(REGISTRY_IMAGE_NAME),,$(error REGISTRY_IMAGE_NAME variable not set))
 $(if $(SAFE_BRANCH_NAME),,$(error SAFE_BRANCH_NAME variable not set))
 
 k8s_deploy: k8s_create-namespace k8s_apply_configuration k8s_generate_configuration_files
@@ -37,7 +39,7 @@ k8s_add-registry-secret:
 			--docker-username=$(REGISTRY_CRED_USR) \
 			--docker-password=$(REGISTRY_CRED_PSW) \
 			--docker-server=$(CONTAINER_REGISTRY) \
-			--docker-email=analyticsops@maersk.com
+			--docker-email=niels.busch@gmail.com
 
 k8s_generate_configuration_files: \
 	_k8s_deploy/deployment.yaml \
@@ -52,6 +54,7 @@ _k8s_deploy/%.yaml: %.template.yaml _k8s_deploy/ FORCE
 	-e 's/__K8S_NAMESPACE__/$(K8S_NAMESPACE)/g' \
 	-e 's/__IMAGE_TAG__/$(IMAGE_TAG)/g' \
 	-e 's/__URL_HOSTNAME__/$(URL_HOSTNAME)/g' \
+	-e 's;__REGISTRY_IMAGE_NAME__;$(REGISTRY_IMAGE_NAME);g' \
 	$< > $@
 
 FORCE:

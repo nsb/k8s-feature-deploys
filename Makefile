@@ -7,17 +7,17 @@ SAFE_BRANCH_NAME := $(shell echo '$(GIT_BRANCH)' | tr '[:upper:]' '[:lower:]' | 
 # If we are not building on master, set URL and namespace from branch name
 ifneq '$(GIT_BRANCH)' 'master'
 IMAGE_TAG := $(SAFE_BRANCH_NAME)-$(GIT_REVISION)
-URL_HOSTNAME = $(SAFE_BRANCH_NAME).dev.maersk-digital.net
+URL_HOSTNAME = $(SAFE_BRANCH_NAME).localhost
 K8S_NAMESPACE = $(SAFE_BRANCH_NAME)
 else
 # On master set a static URL and namespace
 IMAGE_TAG := $(GIT_COMMIT_COUNT)-$(GIT_REVISION)
-URL_HOSTNAME = k8s-feature-deploys.dev.maersk-digital.net
+URL_HOSTNAME = k8s-feature-deploys.localhost
 K8S_NAMESPACE = k8s-feature-deploys
 endif
 
-CONTAINER_REGISTRY ?= revenueoptimisation.azurecr.io/
-IMAGE_NAME = k8s-feature-deploys
+CONTAINER_REGISTRY ?= docker.io/
+IMAGE_NAME = niels/k8s-feature-deploys
 REGISTRY_IMAGE_NAME = $(CONTAINER_REGISTRY)$(IMAGE_NAME)
 
 help:
@@ -61,5 +61,6 @@ k8s_deploy:
 	REGISTRY_CRED_USR=$(REGISTRY_CRED_USR) \
 	REGISTRY_CRED_PSW=$(REGISTRY_CRED_PSW) \
 	CONTAINER_REGISTRY=$(CONTAINER_REGISTRY) \
+	REGISTRY_IMAGE_NAME=$(REGISTRY_IMAGE_NAME) \
 	SAFE_BRANCH_NAME=$(SAFE_BRANCH_NAME) \
 	$(MAKE) -C k8s/ k8s_deploy
